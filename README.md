@@ -8,6 +8,9 @@ Freelance project, 2018 · designed and written by Pourya Afshintabar · sold to
   <img src="media/rotary-dialer-touch.gif" width="400" alt="Rotary telephone dialer on a 4.3-inch touch display">
 </p>
 
+<h2 align="center">All of this runs on a single STM32F1 at just 72 MHz</h2>
+<p align="center"><b>One Cortex-M3 with no graphics hardware of its own drives every animation, transition, plot and video on this page.</b></p>
+
 > In 2018, a smooth graphical interface on a small microcontroller meant writing the drawing, image handling and animation code by hand for every screen; the GUI builders and code generators that are common today were not available for this class of device. I wrote **PAT_GUI** so that an embedded developer can show an image, run a transition, animate an icon, plot a mathematical function or play a video **with one function call**, and leave the low-level work to the library.
 
 ---
@@ -16,7 +19,7 @@ Freelance project, 2018 · designed and written by Pourya Afshintabar · sold to
 
 | | |
 |---|---|
-| **Host MCU** | STM32F103 (ARM Cortex-M3): 72 MHz by default, with an optional 128 MHz overclocked profile |
+| **Host MCU** | **STM32F103 (ARM Cortex-M3) at 72 MHz**, the clock the demos run at; an optional 128 MHz overclocked profile is also available |
 | **Graphics controller** | FTDI/Bridgetek FT81x (EVE), 800 × 480 panel timing; FT80x also supported |
 | **Displays** | Colour TFTs with touch: 4.3", 7" and 8" |
 | **Storage** | SD card on its own SPI bus: images, video and saved UI state |
@@ -126,6 +129,7 @@ Files are read from the SD card in 8 KB blocks and sent to the graphics controll
 
 ## Engineering highlights
 
+- **Smooth graphics on a 72 MHz microcontroller.** The STM32F1 only describes each frame and streams assets; decoding, transforms and drawing run on the graphics controller, so a 72 MHz Cortex-M3 drives full-screen animation and video.
 - **Animation state hidden behind a plain value.** `vibrate` keeps one oscillator per call site and resets at the end of each frame, so animated screens are written like static ones.
 - **Effects from first principles.** Gate and clapperboard transitions come from individual coefficients of the bitmap transform matrix with a quartic easing curve, not from pre-rendered frames.
 - **Stateful image objects on a stateless display list.** Each image remembers its position, angle and scale between frames, which turns `spin` and `hold` into one-line controls.
