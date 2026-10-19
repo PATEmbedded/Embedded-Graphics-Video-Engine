@@ -164,8 +164,6 @@ The examples on this page use cleaned-up, modern C++ names. The 2018 source used
 
 The library was sold to a client, so its **source code is not published**. This repository documents the work through the original demo videos and photos; the descriptions of the internals come from the original source.
 
-More of my work: **[patembedded.github.io/Portfolio](https://patembedded.github.io/Portfolio/)**
-
 **Contact:** [pat.embedded@gmail.com](mailto:pat.embedded@gmail.com) · [LinkedIn](https://www.linkedin.com/in/pourya-afshintabar/)
 
 © 2026 Pourya Afshintabar. All rights reserved. View-only; see [LICENSE](LICENSE).
